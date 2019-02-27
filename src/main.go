@@ -30,7 +30,7 @@ func BaseServer() {
 	info := `
     ***************************************************************
 
-    欢迎使用LRP服务, 使用GO启动PerformancePlatform/main.go
+    欢迎使用后台服务, 使用GO启动main.go
 
     您的IP地址: %s
     您的端口号: %v
