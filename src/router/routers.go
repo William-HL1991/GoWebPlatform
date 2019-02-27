@@ -7,7 +7,7 @@ import (
 
 type Route struct {
 	Name        string
-	Method      string
+	//Method      string
 	Pattern     string
 	HandlerFunc http.HandlerFunc
 }
@@ -17,19 +17,19 @@ type Routes []Route
 var routes = Routes{
 	Route{
 		"Index",
-		"GET",
+		//"GET",
 		"/",
 		handlers.Index,
 	},
 	Route{
 		"Trigger",
-		"GET",
+		//"GET",
 		"/trigger",
 		handlers.Trigger,
 	},
 	Route{
 		"Trigger",
-		"POST",
+		//"POST",
 		"/trigger",
 		handlers.Trigger,
 	},
