@@ -5,20 +5,21 @@ import (
 )
 
 type User struct {
-	Id    int64
-	Name  string  `xorm:"varchar(25) notnull unique 'usr_name'"`
+	Id        int64
+	Name      string  `xorm:"varchar(25) notnull unique 'usrname'"`
+	Password  string  `xorm:"varchar(16) notnull unique 'password'"`
 
 }
 
 // 创建用户
-func newUser(name string) error {
+func NewUser(name string, passwd string) error {
 	// 对未存在的记录进行插入
-	_, err := x.Insert(&User{Name:name})
+	_, err := x.Insert(&User{Name:name, Password:passwd})
 	return err
 }
 
 // 获取用户信息
-func getUser(id int64)(*User, error) {
+func GetUserById(id int64)(*User, error) {
 	u := &User{}
 	// 直接操作 ID
 	has, err := x.Id(id).Get(u)
@@ -32,8 +33,15 @@ func getUser(id int64)(*User, error) {
 
 }
 
+//通过用户名查询用户
+func GetUserByName(name string)(bool, error) {
+	// 查询用户名
+	has, err := x.Exist(&User{Name:name})
+	return has, err
+}
+
 // 删除用户
-func deleteUser(id int64) error {
+func DeleteUser(id int64) error {
 	// 通过 delete 方法删除记录
 	_, err := x.Delete(&User{Id: id})
 	return err

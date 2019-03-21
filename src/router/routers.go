@@ -28,9 +28,8 @@ var routes = Routes{
 		handlers.Trigger,
 	},
 	Route{
-		"Trigger",
-		//"POST",
-		"/trigger",
-		handlers.Trigger,
+		"Login",
+		"/login",
+		handlers.UserLogin,
 	},
 }
